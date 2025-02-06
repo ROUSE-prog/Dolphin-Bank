@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Glassmorphism UI */
+.glass-card {
+  @apply backdrop-blur-xl bg-green-800 bg-opacity-20 dark:bg-gray-800/30 border border-white/20 rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6;
+}
+
+.glass-button {
+  @apply px-6 py-3 text-white font-semibold rounded-lg shadow-lg hover:scale-105 transition duration-200;
+}
+
+.glass-transaction {
+  @apply flex justify-between px-4 py-3 rounded-lg backdrop-blur-lg bg-white/20 dark:bg-gray-800/30 border border-white/30 shadow-md hover:shadow-lg transition duration-200;
+}
+
+.glass-input {
+  @apply px-4 py-3 bg-white/20 dark:bg-gray-800/40 text-stone-900 dark:text-white border border-white/30 rounded-lg shadow-md placeholder-gray-500 focus:ring-2 focus:ring-green-500 focus:outline-none transition duration-200;
+}
+
+/* Fade-in animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1.5s ease-in-out;
+}
