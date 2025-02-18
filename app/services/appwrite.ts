@@ -1,9 +1,11 @@
-import { Client, Account } from "appwrite";
+import { Client, Account } from "appwrite"; // ✅ Only import what's needed
 
 const client = new Client();
-client.setEndpoint("https://cloud.appwrite.io/v1") // Your Appwrite endpoint
-      .setProject("67a4e5e6002fe295ea06"); // Replace with your Appwrite Project ID
+client
+  .setEndpoint("https://cloud.appwrite.io/v1") // Replace with your Appwrite endpoint
+  .setProject("67a4e5e6002fe295ea06"); // Replace with your actual Project ID
 
-const account = new Account(client);
+export const account = new Account(client);
 
-export { account };
+// ✅ Ensure we export only once
+export { client, account };

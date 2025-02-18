@@ -12,7 +12,7 @@ Dolphin Bank is a **modern, secure, and sleek** digital banking platform designe
 ✅ **Transaction Management** – Add, transfer, and withdraw funds effortlessly.  
 ✅ **Interactive Welcome Page** – Powered by **p5.js**, creating an engaging first-time user experience.  
 ✅ **Dark Mode Support** – Enhancing accessibility and usability.  
-✅ **Fully Responsive Design** – Optimized for all screen sizes.  
+✅ **Fully Responsive Design** – Optimized for all screen sizes..
 
 ---
 

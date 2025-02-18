@@ -2,63 +2,65 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { account } from "../services/appwrite"; // Ensure correct import path
 
 export default function LoginPage() {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle login logic
-    console.log("Logging in with", email, password);
+  const handleLogin = async () => {
+    try {
+      if (!email || !password) {
+        alert("Please enter both email and password.");
+        return;
+      }
+
+      // Updated function for Appwrite v1.4+
+      await account.createEmailPasswordSession(email, password);
+
+      router.push("/dashboard");
+    } catch (error: any) {
+      console.error("Login failed:", error);
+      alert(error.message || "Invalid email or password.");
+    }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-stone-300 p-6">
-      {/* Login Card */}
-      <div className="glass-card w-full max-w-md p-8">
-        <h1 className="text-3xl font-bold text-stone-800 text-center">Login</h1>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-200 to-gray-400 dark:from-gray-900 dark:to-gray-800 p-6">
+      <div className="glass-card w-full max-w-md p-6">
+        <h2 className="text-3xl font-bold text-center text-stone-800">Log In</h2>
 
-        <form className="mt-6" onSubmit={handleLogin}>
-          {/* Input Fields */}
-          <div className="space-y-4">
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="glass-input w-full"
-              required
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="glass-input w-full"
-              required
-            />
-          </div>
+        <div className="mt-4 space-y-4">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="glass-input w-full px-4 py-3 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          />
 
-          {/* Login Button */}
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="glass-input w-full px-4 py-3 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          />
+
           <button
-            type="submit"
-            className="glass-button w-full bg-green-900 mt-6"
+            onClick={handleLogin}
+            className="glass-button w-full bg-green-900 text-white py-3 rounded-lg hover:scale-105 transition duration-200"
           >
-            Sign In
+            Log In
           </button>
-        </form>
+        </div>
 
-        {/* Signup Link */}
-        <p className="text-center text-stone-800 mt-4">
-          Don't have an account?{" "}
-          <span
-            onClick={() => router.push("/signup")}
-            className="text-green-500 hover:text-green-400 cursor-pointer"
-          >
+        <p className="text-center text-gray-600 mt-4">
+          Don’t have an account?{" "}
+          <a href="/signup" className="text-blue-500 hover:underline">
             Sign up
-          </span>
+          </a>
         </p>
       </div>
     </div>
