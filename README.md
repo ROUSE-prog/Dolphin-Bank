@@ -4,7 +4,7 @@ Dolphin Bank is a **modern, secure, and sleek** digital banking platform designe
 
 ---
 
-## 🌟 Features
+## 🌟 Featuresss
 
 ✅ **Dynamic Banking Dashboard** – View account balance, transactions, and weekly activity at a glance.  
 ✅ **Glassmorphism UI** – A futuristic, sleek, and immersive user interface.  
